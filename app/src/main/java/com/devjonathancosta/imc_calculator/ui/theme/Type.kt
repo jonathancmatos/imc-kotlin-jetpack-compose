@@ -18,7 +18,7 @@ val Typography = Typography(
     ),
     bodyLarge = TextStyle(
         fontSize = 16.sp,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.Bold,
         color = Black
     ),
     bodyMedium = TextStyle(

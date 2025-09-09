@@ -26,6 +26,7 @@ fun DSTextFormField(
     keyboardType: KeyboardType = KeyboardType.Text,
     textAlign: TextAlign = TextAlign.Start,
     sufixText: String? = null,
+    placeholder: String? = null,
 ){
     return OutlinedTextField(
         modifier = Modifier.fillMaxWidth(),
@@ -36,6 +37,16 @@ fun DSTextFormField(
         keyboardOptions = KeyboardOptions(
             keyboardType = keyboardType
         ),
+        placeholder = {
+            Text(
+                modifier = Modifier.fillMaxWidth(),
+                text = placeholder ?: "",
+                style = MaterialTheme.typography.bodyMedium,
+                color = Gray900,
+                textAlign = textAlign
+
+            )
+        },
         shape = RoundedCornerShape(16.dp),
         textStyle = TextStyle(
             textAlign = textAlign,
@@ -57,6 +68,6 @@ fun DSTextFormField(
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,
             disabledIndicatorColor = Color.Transparent,
-        )
+        ),
     );
 }

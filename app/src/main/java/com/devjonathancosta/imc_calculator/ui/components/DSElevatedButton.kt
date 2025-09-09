@@ -9,9 +9,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.devjonathancosta.imc_calculator.R
 import com.devjonathancosta.imc_calculator.ui.theme.Green500
 import com.devjonathancosta.imc_calculator.ui.theme.White
 

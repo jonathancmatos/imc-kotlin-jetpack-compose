@@ -68,7 +68,8 @@ fun FormView(){
             ){
                 Text(
                     text = stringResource(id = R.string.weight_label),
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
                         .padding(vertical = 8.dp),
                     style = MaterialTheme.typography.bodyLarge.copy(
                         fontWeight = FontWeight.SemiBold,
@@ -79,14 +80,19 @@ fun FormView(){
                     onValueChange = { v -> weight = v},
                     singleLine = true,
                     maxLines = 1,
-                    keyboardType = KeyboardType.NumberPassword,
+                    keyboardType = KeyboardType.Number,
                     textAlign = TextAlign.End,
-                    sufixText = stringResource(R.string.weight_simbols)
+                    sufixText = stringResource(R.string.weight_simbols),
+                    placeholder = stringResource(R.string.ex_weight)
+
                 )
-                Spacer(modifier = Modifier.fillMaxWidth().height(16.dp))
+                Spacer(modifier = Modifier
+                    .fillMaxWidth()
+                    .height(16.dp))
                 Text(
                     text = stringResource(id = R.string.height_label),
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
                         .padding(vertical = 8.dp),
                     style = MaterialTheme.typography.bodyLarge.copy(
                         fontWeight = FontWeight.SemiBold,
@@ -99,9 +105,12 @@ fun FormView(){
                     maxLines = 1,
                     keyboardType = KeyboardType.NumberPassword,
                     textAlign = TextAlign.End,
-                    sufixText = stringResource(R.string.height_simbols)
+                    sufixText = stringResource(R.string.height_simbols),
+                    placeholder = stringResource(R.string.ex_height)
                 )
-                Spacer(modifier = Modifier.fillMaxWidth().height(42.dp))
+                Spacer(modifier = Modifier
+                    .fillMaxWidth()
+                    .height(42.dp))
                 DSElevatedButton(
                     text = stringResource(id = R.string.btn_calculate_text),
                     onClick = {}

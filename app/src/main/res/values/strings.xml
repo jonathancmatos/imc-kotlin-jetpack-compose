@@ -3,6 +3,8 @@
     <string name="weight_label">Peso:</string>
     <string name="weight_simbols">Kg</string>
     <string name="height_label">Altura:</string>
-    <string name="height_simbols">M</string>
+    <string name="height_simbols">Cm</string>
     <string name="btn_calculate_text">CALCULAR</string>
+    <string name="ex_weight">Ex: 80,5</string>
+    <string name="ex_height">Ex: 120</string>
 </resources>

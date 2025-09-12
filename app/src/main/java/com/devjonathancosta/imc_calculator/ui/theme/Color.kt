@@ -3,7 +3,6 @@ package com.devjonathancosta.imc_calculator.ui.theme
 import androidx.compose.ui.graphics.Color
 
 
-
 val Green600 = Color(0xFF4CAF50)
 val Green500 = Color(0xFF00C896)
 val Green400 = Color(0xFF00D7A3)
@@ -11,7 +10,9 @@ val Green300 = Color(0xFFEAF6EF)
 
 val Blue400 = Color(0xFF64B5F6)
 val Orange500 = Color(0xFFFF9800)
-val Red500 = Color(0xFFF44336)
+val Red500 = Color(0xFFB71C1C)
+val Pink500 = Color(0xFFE91E63)
+val Purple500 = Color(0xFF9C27B0)
 
 val White = Color(0xFFFFFFFF)
 val Black = Color(0xFF000000)

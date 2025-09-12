@@ -7,4 +7,5 @@
     <string name="btn_calculate_text">CALCULAR</string>
     <string name="ex_weight">Ex: 80,5</string>
     <string name="ex_height">Ex: 120</string>
+    <string name="graphic_legend">Kg/M²</string>
 </resources>

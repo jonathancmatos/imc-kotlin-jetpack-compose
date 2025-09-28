@@ -74,7 +74,8 @@ fun ResultView(navController: NavController, imc: Float) {
                         horizontal = 16.dp
                     )
             ) {
-                Text("VOCÊ ESTÁ:",
+                Text(
+                    stringResource(R.string.you_are_text),
                     style = MaterialTheme.typography.bodyLarge.copy(
                         color = Gray900
                     ),
@@ -82,11 +83,13 @@ fun ResultView(navController: NavController, imc: Float) {
                 Spacer(modifier = Modifier.size(8.dp))
                 Text(title,
                     style = MaterialTheme.typography.displayMedium.copy(
-                        color = color
+                        color = color,
+                        textAlign = TextAlign.Center
                     )
                 )
                 Spacer(modifier = Modifier.size(32.dp))
-                Text("SEU PESO ESTÁ ENTRE:",
+                Text(
+                    stringResource(R.string.your_weight_comes_between_text),
                     style = MaterialTheme.typography.bodyLarge.copy(
                         color = Gray900
                     ),

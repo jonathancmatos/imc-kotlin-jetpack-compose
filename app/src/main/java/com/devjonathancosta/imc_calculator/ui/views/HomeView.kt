@@ -1,6 +1,8 @@
 package com.devjonathancosta.imc_calculator.ui.views
 
+import com.devjonathancosta.imc_calculator.ui.views.state.HomeViewModel
 import android.annotation.SuppressLint
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -23,25 +25,50 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.devjonathancosta.imc_calculator.R
+import com.devjonathancosta.imc_calculator.core.utils.Utils
 import com.devjonathancosta.imc_calculator.ui.components.DSElevatedButton
 import com.devjonathancosta.imc_calculator.ui.components.DSScaffold
 import com.devjonathancosta.imc_calculator.ui.components.DSTextFormField
 import com.devjonathancosta.imc_calculator.ui.theme.White
+import com.devjonathancosta.imc_calculator.ui.views.state.IMCError
+import com.devjonathancosta.imc_calculator.ui.views.state.IMCFormState
+import com.devjonathancosta.imc_calculator.ui.views.state.IMCSuccess
 
-@SuppressLint("UnrememberedMutableInteractionSource")
+@SuppressLint("UnrememberedMutableInteractionSource", "ViewModelConstructorInComposable",
+    "UnrememberedMutableState"
+)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeView(navController: NavController) {
-    var weight by remember { mutableStateOf("") }
-    var height by remember { mutableStateOf("") }
+    val viewModel: HomeViewModel = viewModel()
+    val state = viewModel.imcState.value
+    val requiredField = stringResource(R.string.required_field)
+
+    var inputWeightError: String? by remember { mutableStateOf(null) }
+    var inputHeightError: String? by remember { mutableStateOf(null) }
+
+    when (state) {
+        is IMCSuccess -> {
+            navController.navigate("result/${state.imc}")
+        }
+        is IMCError -> {
+            Toast.makeText(
+                navController.context,
+                state.message,
+                Toast.LENGTH_LONG)
+                .show()
+        }
+        else -> {}
+    }
 
     DSScaffold(
         title = stringResource(id = R.string.app_name),
         textAlign = TextAlign.Center,
-        navController = navController!!,
+        navController = navController,
         content = { padding ->
             Column (
                 modifier = Modifier
@@ -63,8 +90,9 @@ fun HomeView(navController: NavController) {
                     )
                 )
                 DSTextFormField(
-                    initialValue = weight,
-                    onValueChange = { v -> weight = v},
+                    initialValue = (state as? IMCFormState)?.weight?.value ?: "",
+                    onValueChange = { viewModel.onWeightChange(it) },
+                    error = inputWeightError,
                     singleLine = true,
                     maxLines = 1,
                     keyboardType = KeyboardType.Number,
@@ -86,10 +114,11 @@ fun HomeView(navController: NavController) {
                     )
                 )
                 DSTextFormField(
-                    initialValue = height,
-                    onValueChange = { v -> height = v},
+                    initialValue = (state as? IMCFormState)?.height?.value ?: "",
+                    onValueChange = { viewModel.onHeightChange(it) },
                     singleLine = true,
                     maxLines = 1,
+                    error = inputHeightError,
                     keyboardType = KeyboardType.NumberPassword,
                     textAlign = TextAlign.End,
                     sufixText = stringResource(R.string.height_simbols),
@@ -101,12 +130,31 @@ fun HomeView(navController: NavController) {
                 DSElevatedButton(
                     text = stringResource(id = R.string.btn_calculate_text),
                     onClick = {
-                        navController.navigate("result");
+                        inputWeightError = null
+                        inputHeightError = null
+                        if (state !is IMCFormState) return@DSElevatedButton
+
+                        if(!inputIsValid(state.weight.value)){
+                            inputWeightError = requiredField
+                            return@DSElevatedButton
+                        }else if(!inputIsValid(state.height.value)){
+                            inputHeightError = requiredField
+                            return@DSElevatedButton
+                        }
+
+                        viewModel.calculateIMC(
+                            weight = Utils.converttedToFloat(state.weight.value ?: ""),
+                            height = Utils.converttedToFloat(state.height.value ?: "")
+                        )
                     }
                 )
             }
         }
     )
+}
+
+fun inputIsValid(value:String?): Boolean {
+    return !value.isNullOrBlank()
 }
 
 @Preview

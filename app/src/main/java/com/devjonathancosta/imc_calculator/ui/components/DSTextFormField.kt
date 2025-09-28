@@ -16,6 +16,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.devjonathancosta.imc_calculator.ui.theme.Gray900
 import com.devjonathancosta.imc_calculator.ui.theme.Green300
+import com.devjonathancosta.imc_calculator.ui.theme.Red500
 
 @Composable
 fun DSTextFormField(
@@ -27,6 +28,7 @@ fun DSTextFormField(
     textAlign: TextAlign = TextAlign.Start,
     sufixText: String? = null,
     placeholder: String? = null,
+    error: String? = null,
 ){
     return OutlinedTextField(
         modifier = Modifier.fillMaxWidth(),
@@ -34,6 +36,7 @@ fun DSTextFormField(
         onValueChange = onValueChange,
         singleLine = singleLine,
         maxLines = maxLines,
+        isError = error != null,
         keyboardOptions = KeyboardOptions(
             keyboardType = keyboardType
         ),
@@ -45,6 +48,13 @@ fun DSTextFormField(
                 color = Gray900,
                 textAlign = textAlign
 
+            )
+        },
+        supportingText = {
+            Text(
+                text = error ?: "",
+                style = MaterialTheme.typography.bodySmall,
+                color = Red500
             )
         },
         shape = RoundedCornerShape(16.dp),

@@ -3,9 +3,23 @@
     <string name="weight_label">Peso:</string>
     <string name="weight_simbols">Kg</string>
     <string name="height_label">Altura:</string>
-    <string name="height_simbols">Cm</string>
+    <string name="height_simbols">M</string>
     <string name="btn_calculate_text">CALCULAR</string>
     <string name="ex_weight">Ex: 80,5</string>
-    <string name="ex_height">Ex: 120</string>
+    <string name="ex_height">Ex: 1.70</string>
     <string name="graphic_legend">Kg/M²</string>
+    <string name="required_field">Campo Obrigatório</string>
+    <string name="underweight_text">ABAIXO DO PESO</string>
+    <string name="healthy_text">SAUDÁVEL</string>
+    <string name="overweight">SOBREPESO</string>
+    <string name="grade_1_obesity">OBESIDADE GRAU I</string>
+    <string name="grade_2_obesity">OBESIDADE GRAU II</string>
+    <string name="grade_3_obesity">OBESIDADE GRAU III</string>
+    <string name="n_a_text">N/A</string>
+    <string name="_0_to_18_4_text">0 a 18,4</string>
+    <string name="_18_5_a_24_9_text">18,5 a 24,9</string>
+    <string name="_25_0_a_29_9_text">25,0 a 29,9</string>
+    <string name="_30_0_a_34_9_text">30,0 a 34,9</string>
+    <string name="_35_0_a_39_9_text">35,0 a 39,9</string>
+    <string name="_40_0_a_50_0_text">40,0 a 50.0</string>
 </resources>

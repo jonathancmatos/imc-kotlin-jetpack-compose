@@ -51,18 +51,25 @@ fun HomeView(navController: NavController) {
     var inputWeightError: String? by remember { mutableStateOf(null) }
     var inputHeightError: String? by remember { mutableStateOf(null) }
 
-    when (state) {
-        is IMCSuccess -> {
-            navController.navigate("result/${state.imc}")
+    androidx.compose.runtime.LaunchedEffect(state) {
+        if (state is IMCSuccess) {
+            navController.navigate("result/${state.imc}") {
+                launchSingleTop = true
+                popUpTo("home") { inclusive = false }
+            }
+            viewModel.resetState()
         }
-        is IMCError -> {
+    }
+
+    androidx.compose.runtime.LaunchedEffect(state) {
+        if (state is IMCError) {
             Toast.makeText(
                 navController.context,
                 state.message,
-                Toast.LENGTH_LONG)
-                .show()
+                Toast.LENGTH_LONG
+            ).show()
+            viewModel.resetState()
         }
-        else -> {}
     }
 
     DSScaffold(

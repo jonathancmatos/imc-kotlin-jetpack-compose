@@ -22,4 +22,6 @@
     <string name="_30_0_a_34_9_text">30,0 a 34,9</string>
     <string name="_35_0_a_39_9_text">35,0 a 39,9</string>
     <string name="_40_0_a_50_0_text">40,0 a 50.0</string>
+    <string name="you_are_text">VOCÊ ESTÁ:</string>
+    <string name="your_weight_comes_between_text">SEU PESO ESTÁ ENTRE:</string>
 </resources>

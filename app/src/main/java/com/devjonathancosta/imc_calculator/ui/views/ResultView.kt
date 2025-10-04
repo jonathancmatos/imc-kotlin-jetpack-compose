@@ -60,7 +60,6 @@ fun ResultView(navController: NavController, imc: Float) {
         title = stringResource(id = R.string.app_name),
         textAlign = TextAlign.Center,
         navController = navController,
-        canNavigateBack = true,
         content = { padding ->
             Column (
                 horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally,

@@ -18,7 +18,6 @@ fun DSScaffold(
     title: String = "",
     content: @Composable (PaddingValues) -> Unit,
     navController: NavController,
-    canNavigateBack: Boolean = false,
     textAlign: TextAlign = TextAlign.Start
 ) {
     Scaffold(
@@ -37,8 +36,8 @@ fun DSScaffold(
                     )
                 },
                 navigationIcon = {
-                    if (canNavigateBack) {
-                        IconButton(onClick = { navController.navigateUp() }) {
+                    if (navController.previousBackStackEntry != null ) {
+                        IconButton(onClick = { navController.popBackStack() }) {
                             Icon(
                                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                                 contentDescription = null,

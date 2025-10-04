@@ -32,4 +32,8 @@ class HomeViewModel : ViewModel() {
             _imcState.value = IMCError(message = e.message ?: "Unknown error")
         }
     }
+
+    fun resetState() {
+        _imcState.value = IMCFormState()
+    }
 }
